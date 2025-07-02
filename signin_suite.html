@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login - Hiren App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+box-sizing: border-box;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+margin: 0;
+padding: 0;
+background: #f3f4f6;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.login-container {
+background: #fff;
+padding: 40px;
+width: 100%;
+max-width: 400px;
+border-radius: 10px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.login-container h2 {
+margin-bottom: 20px;
+text-align: center;
+color: #333;
+}
+
+label {
+display: block;
+margin-bottom: 5px;
+font-weight: 600;
+color: #555;
+}
+
+input[type="text"],
+input[type="password"] {
+width: 100%;
+padding: 12px;
+margin-bottom: 15px;
+border: 1px solid #ccc;
+border-radius: 5px;
+transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+border-color: #007bff;
+outline: none;
+}
+
+.show-password {
+display: flex;
+align-items: center;
+font-size: 14px;
+margin-bottom: 15px;
+}
+
+.show-password input[type="checkbox"] {
+margin-right: 8px;
+}
+
+button {
+width: 100%;
+padding: 12px;
+background-color: #007bff;
+color: white;
+border: none;
+font-size: 16px;
+border-radius: 5px;
+cursor: pointer;
+transition: background 0.3s;
+}
+
+button:hover {
+background-color: #0056b3;
+}
+
+#login-status {
+text-align: center;
+margin-top: 20px;
+font-weight: 600;
+}
+</style>
+</head>
+<body>
+
+<div class="login-container">
+<h2>Welcome Back</h2>
+<form id="login-form">
+<label for="input-username">Username</label>
+<input type="text" id="input-username" placeholder="e.g. Username" required>
+
+<label for="input-password">Password</label>
+<input type="password" id="input-password" placeholder="Enter your password" required>
+
+<div class="show-password">
+<input type="checkbox" id="toggle-password">
+<label for="toggle-password">Show password</label>
+</div>
+
+<button type="submit">Login</button>
+<p id="login-status"></p>
+</form>
+</div>
+
+<script>
+// Fake credentials
+const validUsername = "hiren.p";
+const validPassword = "HrN!38xk@2024";
+
+const loginForm = document.getElementById("login-form");
+const loginStatus = document.getElementById("login-status");
+const passwordField = document.getElementById("input-password");
+const togglePassword = document.getElementById("toggle-password");
+
+// Toggle password visibility
+togglePassword.addEventListener("change", () => {
+passwordField.type = togglePassword.checked ? "text" : "password";
+});
+
+// Form submit
+loginForm.addEventListener("submit", function(event) {
+event.preventDefault();
+
+const enteredUsername = document.getElementById("input-username").value.trim();
+const enteredPassword = passwordField.value;
+
+if (enteredUsername === validUsername && enteredPassword === validPassword) {
+loginStatus.textContent = "✅ Login successful!";
+loginStatus.style.color = "green";
+} else {
+loginStatus.textContent = "❌ Invalid username or password.";
+loginStatus.style.color = "red";
+}
+});
+</script>
+
+</body>
+</html>
